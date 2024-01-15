@@ -66,7 +66,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ### Contributors
 
-[Samuel Adekunle](https://github.com/techwithsam) | [Michael Tolu](https://github.com/TOLU-MICH) | [Olamide (Xpiral)](https://github.com/xpiral)
+[Samuel Adekunle](https://github.com/techwithsam) | [Michael Tolu](https://github.com/TOLU-MICH) | [Olamide (Xpiral)](https://github.com/xpiral397)
 
 ## License
 
