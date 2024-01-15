@@ -12,6 +12,7 @@ This is centered on Goal 14 & 15 of the United Nations Sustainable Development G
 
 <details close>
  <summary><b>Getting Started for Mobile App</b>: </summary>
+ <br>
 
 To get started, you need to have Flutter installed on your machine. You can find the installation instructions [here](https://flutter.dev/docs/get-started/install).
 
