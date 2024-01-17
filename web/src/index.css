@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .collapsible__header {
+    @apply flex justify-between;
+  }
+
+  .collapsible__heading {
+    @apply text-5xl mt-0;
+  }
+
+  .collapsible__chevron {
+    @apply -rotate-90 transition-transform duration-[0.3s];
+  }
+
+  .collapsible__content {
+    @apply max-h-0 overflow-hidden opacity-0 transition-all duration-[0.3s];
+  }
+
+  .collapsible--expanded .collapsible__chevron {
+    @apply rotate-[0];
+  }
+
+  .collapsible--expanded .collapsible__content {
+    @apply max-h-full opacity-100;
+  }
+
+  .nav__toggler {
+    @apply opacity-50 transition-shadow duration-[0.15s] cursor-pointer md:hidden;
+  }
+
+  .nav.collapsible--expanded .nav__toggler {
+    @apply opacity-100 shadow-[0_0_0_3px_#666] rounded-[5px];
+  }
+}
