@@ -1,8 +1,14 @@
 // components/Sidebar.tsx
 'use client'
 import {Divider} from '@nextui-org/react';
-import Link from 'next/link';
 import {useEffect, useState} from 'react';
+import React, {ReactNode} from "react";
+import EcoGuardLogo from "@/public/assets/EcoGuardLogo.png"
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, ScrollShadow} from "@nextui-org/react";
+import Image from "next/image";
+import {signOut, useSession} from 'next-auth/react';
+
+
 
 
 interface SidebarItemProps {
@@ -44,7 +50,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
         }
     }, []);
     return (
-        <nav className="bg-slate-900 h-screen shadow-2xl py-3 px-2 w-[200px]">
+        <nav className="bg-slate-900 h-[100vh] shadow-2xl py-3 px-2 w-[200px]">
             <ul>
                 <SidebarItem href="/marine" icon="" label="Marines Monitorings" pathname={link}>
                     <ul>
@@ -97,4 +103,71 @@ const Sidebar: React.FC<SidebarProps> = () => {
     );
 };
 
+export function EcoNavbar() {
+    const {data: session} = useSession()
+    return <Navbar className="drop-shadow-xl">
+        <NavbarBrand>
+            <Image src={EcoGuardLogo} alt='logo' className="rounded-full" width={100} height={30} />
+            <p className="font-bold text-inherit">EcoGuard</p>
+        </NavbarBrand>
+
+        <NavbarContent className="hidden sm:flex gap-4" justify="center">
+            <NavbarItem>
+                <Link color="foreground" href="/">
+                    Home
+                </Link>
+            </NavbarItem>
+            <NavbarItem isActive>
+                <Link href="/dashboard" aria-current="page" color="secondary">
+                    Dashboard
+                </Link>
+            </NavbarItem>
+            <NavbarItem>
+                <Link color="foreground" href="#">
+                    Integrations
+                </Link>
+            </NavbarItem>
+        </NavbarContent>
+
+        <NavbarContent as="div" justify="end">
+            {
+                session?.user?.name ?
+                    <Dropdown placement="bottom-end">
+                        <DropdownTrigger>
+                            <Avatar
+                                isBordered
+                                as="button"
+                                className="transition-transform"
+                                color="secondary"
+                                name="Jason Hughes"
+                                size="sm"
+                                src={session?.user.image || ""}
+                            />
+                        </DropdownTrigger>
+                        <DropdownMenu aria-label="Profile Actions" variant="flat">
+
+                            <DropdownItem key="profile" className="h-14 gap-2">
+                                <p className="font-semibold">Signed in as</p>
+                                <p className="font-semibold">{session?.user?.email}</p>
+                            </DropdownItem>
+                            <DropdownItem key="settings">My Settings</DropdownItem>
+                            <DropdownItem key="team_settings">Team Settings</DropdownItem>
+                            <DropdownItem key="analytics">Analytics</DropdownItem>
+                            <DropdownItem key="system">System</DropdownItem>
+                            <DropdownItem key="configurations">Configurations</DropdownItem>
+                            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+                            <DropdownItem key="logout" color="danger" onClick={() => {signOut()}}>
+                                Log Out
+                            </DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
+                    :
+                    <Button type='button' variant='flat' className='px-5 w-[30%] bg-purple-800 text-white font-bold text-[14px] rounded-md '>
+                        <Link href='auth/login'><span className='text-white text-[14px]'>Log in</span></Link>
+                    </Button>
+
+            }
+        </NavbarContent>
+    </Navbar>
+}
 export default Sidebar;

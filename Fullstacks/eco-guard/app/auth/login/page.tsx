@@ -1,6 +1,6 @@
 "use client"
 import React, {useState} from 'react'
-import nextLogo from "@/public/vercel.svg"
+import nextLogo from "@/public/assets/EcoGuardLogo.png"
 import {Button, Select, SelectItem} from "@nextui-org/react";
 import Image from 'next/image';
 import Glogo from '@/public/assets/GoogleLogo.svg'
@@ -31,8 +31,9 @@ export default function Page() {
 
             <div className='px-10 border-[1px] shadow-2xl rounded-md border-l-purple-100 border-r-purple-100 border-blue-100 py-5 bg-white px-1'>
                 <form method='POST' className='space-y-5' >
-                    <div className='flex justify-center '>
-                        <Image src={nextLogo} alt="" width={'100'} height={'50'} />
+                    <div className='flex items-center justify-center '>
+                        <Image className='rounded-full' src={nextLogo} alt="" width={'50'} height={'50'} />
+                        <span className='font-bold text-xl text-slate-900'>EcoGuard</span>
                     </div>
                     <div className='w-full space-x-5 w-[400px]'>
                         <label htmlFor="username" className=''>Username:</label>
@@ -47,7 +48,7 @@ export default function Page() {
                     <div>
                         <Button variant='flat' type='button' className='bg-neutral-100 border-slate-100 border font-[600] text-[15px] rounded-[10px] w-full shadow-sm mt-2 px-2 py-2'><Link href={'/auth/register'}>Don't Have Account </Link></Button>
                         <p></p>
-                        <Button onClick={() => signOut()} startContent={<GoogleLogo />} variant='flat' type='button' className='bg-neutral-100 border-slate-100 border font-[600] text-[15px] rounded-[10px] w-full shadow-sm mt-2 px-2 py-2'>Sign in with Google</Button>
+                        <Button onClick={() => signIn()} startContent={<GoogleLogo />} variant='flat' type='button' className='bg-neutral-100 border-slate-100 border font-[600] text-[15px] rounded-[10px] w-full shadow-sm mt-2 px-2 py-2'>Sign in with Google</Button>
                     </div>
                     <input type='submit' className=' px-2 py-2 w-full bg-slate-900 rounded-md text-white text-bold hover:bg-slate-900' />
                 </form>

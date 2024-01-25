@@ -4,7 +4,7 @@ import React from "react";
 const Button = ({value, color}: {color: string, value: string}) => {
     return (
         <div className="flex flex-col  lg:mb-4 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-            <a href="/auth/create-account">
+            <a href="/auth/login">
                 <span
                     className={
                         "inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-indigo-900  hover:bg-gray-900 hover:lg:text-white hover:cursor-pointer " +

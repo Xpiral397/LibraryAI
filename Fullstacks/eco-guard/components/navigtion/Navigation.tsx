@@ -5,7 +5,7 @@ import Image from "next/image";
 import NavigationList from "./NavigationList";
 import SpriteLoader from "../SpriteLoader";
 
-const data = ["home", "Info", "About us", "why us", "Contact US"];
+const data = ["Home ", "Info", "About us", "Why Us", "Contact US", "Login"];
 const Navigation = ({PositionList}: {PositionList: Array<RefObject<HTMLElement>>}) => {
     const [showNavbar, setShowNavbar] = useState(false);
     const [showNavList, setShowNavList] = useState(false);
@@ -57,7 +57,7 @@ const Navigation = ({PositionList}: {PositionList: Array<RefObject<HTMLElement>>
             <a className="translate-y-[5px] w-[150px]" href="/">
                 <Image height={'0'} width={'0'} src={nextLogo} alt="" />
             </a>
-            <SpriteLoader id="menu" style={" @apply opacity-50 transition-shadow duration-[0.15s] cursor-pointer md: hidden"} />
+            <SpriteLoader id="menu" style={"opacity-50 transition-shadow duration-[0.15s] cursor-pointer md: hidden"} />
             <NavigationList
                 list={newData}
                 style={showNavList ? "!opacity-100 !max-h-full" : ''}
